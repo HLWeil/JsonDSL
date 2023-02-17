@@ -1,3 +1,8 @@
+### 0.0.2+860d90f (Released 2023-2-17)
+* Additions:
+    * [[#860d90f](https://github.com/HLWeil/JsonDSL/commit/860d90f91aa62f0b1e577074774b9f2d952e23eb)] allow array to use for loops
+    * [[#0d61d98](https://github.com/HLWeil/JsonDSL/commit/0d61d980fccc0ed2b18fec45bcc8c4d7afad0293)] bump to 0.0.1
+
 ### 0.0.1+5e340ac (Released 2023-2-17)
 * Additions:
     * [[#5e340ac](https://github.com/HLWeil/JsonDSL/commit/5e340acd11d1ed01d3574c137dfae7fc421d779d)] rename to JsonDSL
