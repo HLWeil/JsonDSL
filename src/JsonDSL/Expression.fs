@@ -1,4 +1,4 @@
-﻿namespace LitJson
+﻿namespace JsonDSL
 
 open Microsoft.FSharp.Linq.RuntimeHelpers
 

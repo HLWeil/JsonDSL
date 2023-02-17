@@ -2,7 +2,7 @@
 
 open Fake.Core
 
-let project = "LitJson"
+let project = "JsonDSL"
 
 let testProjects = 
     [

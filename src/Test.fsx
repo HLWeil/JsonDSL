@@ -1,7 +1,7 @@
-#r @"..\src\LitJson\bin\Release\net7.0\LitJson.dll"
+#r @"..\src\JsonDSL\bin\Release\net7.0\JsonDSL.dll"
 
 
-open LitJson
+open JsonDSL
 open System.Text.Json
 
 let options = JsonSerializerOptions(WriteIndented = true)

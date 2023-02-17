@@ -1,4 +1,4 @@
-﻿namespace LitJson
+﻿namespace JsonDSL
 
 open System.Text.Json
 open Microsoft.FSharp.Quotations

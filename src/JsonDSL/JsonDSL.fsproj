@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <description>Small FSharp based DSL for writing literal json</description>
+    <Authors>HLWeil</Authors>
+    <PackageIconUrl>https://fslab.org/docs-template/img/logo.png</PackageIconUrl>
+    <PackageTags>F# FSharp json dsl .NET</PackageTags>
+    <RepositoryUrl>https://github.com/CSBiology/LitXml</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="FSharpExtensions.fs" />
+    <Compile Include="Expression.fs" />
+    <Compile Include="ObjectBuilder.fs" />
+    <Compile Include="ArrayBuilder.fs" />
+    <Compile Include="DSL.fs" />
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,4 @@
-﻿namespace LitJson
+﻿namespace JsonDSL
 
 [<AutoOpen>]
 module DSL =
