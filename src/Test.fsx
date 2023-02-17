@@ -28,4 +28,16 @@ let jNode =
         )
     }
 
+//let x = 
+//    array {
+//        for i in [1.. 10] do
+//            object {
+//                property "number" i
+           
+//            }
+//    }
+
+
+x.ToJsonString(options)
+
 jNode.ToJsonString(options)
