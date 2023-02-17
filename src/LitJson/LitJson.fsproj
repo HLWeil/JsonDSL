@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="FSharpExtensions.fs" />
+    <Compile Include="Expression.fs" />
+    <Compile Include="ObjectBuilder.fs" />
+    <Compile Include="ArrayBuilder.fs" />
+    <Compile Include="DSL.fs" />
   </ItemGroup>
 
 </Project>
