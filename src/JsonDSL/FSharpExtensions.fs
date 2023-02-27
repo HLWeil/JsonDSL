@@ -156,6 +156,14 @@ module FSharpExtensions =
         let toString (n : #Nodes.JsonNode) =
             n.ToJsonString()
 
+        let inline ofGeneric<'T> (v : 'T) =
+
+            match box v with
+            | :? Nodes.JsonArray as array -> array :> Nodes.JsonNode
+            | :? Nodes.JsonValue as value -> value :> Nodes.JsonNode
+            | :? Nodes.JsonObject as object -> object :> Nodes.JsonNode
+            | v -> JsonValue.create v :> Nodes.JsonNode
+
     [<AutoOpen>]
     module JsonNodeExtensions =
         /// Cast any child object of JsonNode to a JsonNode

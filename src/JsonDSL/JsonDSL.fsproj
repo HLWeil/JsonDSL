@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Compile Include="FSharpExtensions.fs" />
+    <Compile Include="JEntity.fs" />
     <Compile Include="Expression.fs" />
     <Compile Include="ObjectBuilder.fs" />
     <Compile Include="ArrayBuilder.fs" />
