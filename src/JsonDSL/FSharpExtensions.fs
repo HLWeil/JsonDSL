@@ -47,7 +47,7 @@ module FSharpExtensions =
             properties
             |> List.map (fun kv ->
                 let v = Nodes.JsonNode.Parse(kv.Value.ToJsonString())
-                KeyValuePair.Create(kv.Key,v))
+                KeyValuePair(kv.Key,v))
             |> Nodes.JsonObject
 
         /// Creates a new JsonObject, containing the union of the properties of both given JsonObjects, but with any key appearing at most once
@@ -65,7 +65,7 @@ module FSharpExtensions =
                     mapping kv.Value
                     |> fun v -> v.ToJsonString()
                     |> Nodes.JsonNode.Parse
-                KeyValuePair.Create(kv.Key,v))
+                KeyValuePair(kv.Key,v))
             |> Nodes.JsonObject
 
         /// Creates a new JsonObject, with the mapping operation applied on only those property value of the given JsonObject for whichs keys the predicate returned true 
@@ -79,7 +79,7 @@ module FSharpExtensions =
                         kv.Value
                     |> fun v -> v.ToJsonString()
                     |> Nodes.JsonNode.Parse
-                KeyValuePair.Create(kv.Key,v))
+                KeyValuePair(kv.Key,v))
             |> Nodes.JsonObject
 
     /// Helper functions for JsonValue
