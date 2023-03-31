@@ -1,3 +1,7 @@
+### 0.0.5+b345971 (Released 2023-3-31)
+* Additions:
+    * [[#b345971](https://github.com/HLWeil/JsonDSL/commit/b345971ee1b8221ab0783713506d782b724b285a)] bump to 0.0.4
+
 ### 0.0.4+68e3b10 (Released 2023-2-28)
 * Additions:
     * [[#68e3b10](https://github.com/HLWeil/JsonDSL/commit/68e3b108a1f105fd7a43a4c29947909fe21c5ed0)] change compilation target to netstandard2.0
