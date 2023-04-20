@@ -7,17 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="test_files\string_value.json" />
-    <Content Include="test_files\number_value.json" />
-    <Content Include="test_files\boolean_value.json" />
-    <Content Include="test_files\array_value.json" />
-    <Content Include="test_files\object_value.json" />
-    <Compile Include="test_files\all_values.json" />
-    <Compile Include="Sample.fs" />
+    <EmbeddedResource Include="test_files\string_value.json" />
+    <EmbeddedResource Include="test_files\number_value.json" />
+    <EmbeddedResource Include="test_files\boolean_value.json" />
+    <EmbeddedResource Include="test_files\array_value.json" />
+    <EmbeddedResource Include="test_files\object_value.json" />
+    <EmbeddedResource Include="test_files\all_values.json" />
+    <None Include="Test.fsx" />
+    <Compile Include="TestUtils.fs" />
+    <Compile Include="Basetests.fs" />
+    <Compile Include="ReferenceObjects.fs" />
+    <Compile Include="TestObjects.fs" />
+    <Compile Include="StringCreationTests.fs" />
+    <Compile Include="ObjectCreationTests.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
-
-  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="Expecto" Version="9.*" />

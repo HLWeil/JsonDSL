@@ -6,7 +6,9 @@
     "string",
     42,
     false,
-    ["inner_array"]
+    [
+      "inner_array"
+    ]
   ],
   "object_value": {
     "string_value": "yes",
@@ -16,7 +18,9 @@
       "string",
       42,
       false,
-      [ "inner_array" ]
+      [
+        "inner_array"
+      ]
     ]
   }
 }
