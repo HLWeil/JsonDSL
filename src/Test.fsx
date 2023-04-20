@@ -1,5 +1,4 @@
-#r @"..\src\JsonDSL\bin\Release\net7.0\JsonDSL.dll"
-
+#r @"..\src\JsonDSL\bin\Debug\netstandard2.0\JsonDSL.dll"
 
 open JsonDSL
 open System.Text.Json

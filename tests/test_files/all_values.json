@@ -1,0 +1,22 @@
+﻿{
+  "string_value": "yes",
+  "number_value": 42,
+  "boolean_value": true,
+  "array_value": [
+    "string",
+    42,
+    false,
+    ["inner_array"]
+  ],
+  "object_value": {
+    "string_value": "yes",
+    "number_value": 42,
+    "boolean_value": true,
+    "array_value": [
+      "string",
+      42,
+      false,
+      [ "inner_array" ]
+    ]
+  }
+}
