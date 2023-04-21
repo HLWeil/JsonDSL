@@ -6,7 +6,7 @@ let project = "JsonDSL"
 
 let testProjects = 
     [
-        // add relative paths (from project root) to your testprojects here
+        "tests/JsonDSLTests.fsproj"
     ]
 
 let solutionFile  = $"{project}.sln"

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="test_files\string_value.json" />
+    <EmbeddedResource Include="test_files\number_value.json" />
+    <EmbeddedResource Include="test_files\boolean_value.json" />
+    <EmbeddedResource Include="test_files\array_value.json" />
+    <EmbeddedResource Include="test_files\object_value.json" />
+    <EmbeddedResource Include="test_files\all_values.json" />
+    <None Include="Test.fsx" />
+    <Compile Include="TestUtils.fs" />
+    <Compile Include="Basetests.fs" />
+    <Compile Include="ReferenceObjects.fs" />
+    <Compile Include="TestObjects.fs" />
+    <Compile Include="StringCreationTests.fs" />
+    <Compile Include="ObjectCreationTests.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Expecto" Version="9.*" />
+    <PackageReference Include="YoloDev.Expecto.TestSdk" Version="0.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+    <ProjectReference Include="..\src\JsonDSL\JsonDSL.fsproj" />
+    <PackageReference Update="FSharp.Core" Version="6.*" />
+  </ItemGroup>
+</Project>
