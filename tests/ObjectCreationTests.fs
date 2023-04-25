@@ -2,12 +2,39 @@
 
 
 open Expecto
+open JsonDSL
 open System.Text.Json
-open System.Text.Json.Nodes
+open TestUtils
+
 // These tests use the objects in TestObjects and compare them to the objects parsed from ReferenceObjects
 // a `DeepEquals` method is curtrently not available for System.text.Json, so we have to either wait or write such a function on our own.
 // i'll mark these tests as pending for now.
 // see also: https://stackoverflow.com/questions/60580743/what-is-equivalent-in-jtoken-deepequals-in-system-text-json
+
+[<Tests>]
+let ``yield JEntity tests`` =
+    testList "yield optional properties" [
+        testCase "jEntity_string_value" (fun _ ->
+            let result = 
+                object {
+                    property "myProperty" (-. (Option.Some "5"))                    
+                }
+               
+            let v = result |> JsonObject.tryGetProperty "myProperty"
+            Expect.isSome v "did not yield correct property"
+            JsonNode.isValue (v.Value) "did not yield correct value"
+            Expect.equal (v.Value.AsValue() |> JsonValue.asString) "5" "yielded value was not correct"
+        )
+        testCase "jEntity_noneOptional_value" (fun _ ->
+            let result = 
+                object {
+                    property "myProperty" (-. Option.None)                    
+                }
+               
+            let v = result |> JsonObject.getProperties |> Seq.length
+            Expect.equal v 0 "Object should have no properties"
+        )
+    ]
 
 [<PTests>]
 let ``json string creation tests`` =

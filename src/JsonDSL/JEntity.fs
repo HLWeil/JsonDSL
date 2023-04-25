@@ -89,6 +89,7 @@ type JEntity<'T> =
         | :? JEntity<Nodes.JsonArray>   as entity -> JEntity.map node entity    
         | :? JEntity<Nodes.JsonValue>   as entity -> JEntity.map node entity       
         | :? JEntity<Nodes.JsonObject>  as entity -> JEntity.map node entity    
+        | :? JEntity<Nodes.JsonNode>    as entity -> JEntity.map node entity    
         | :? JEntity<string>            as entity -> JEntity.map (JsonNode.ofGeneric<string>) entity
         | :? JEntity<int>               as entity -> JEntity.map (JsonNode.ofGeneric<int>) entity    
         | :? JEntity<float>             as entity -> JEntity.map (JsonNode.ofGeneric<float>) entity    
