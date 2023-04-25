@@ -1,3 +1,12 @@
+### 0.1.0+fd996da (Released 2023-4-25)
+* Additions:
+    * [[#a393a7b](https://github.com/HLWeil/JsonDSL/commit/a393a7b706ff23f9bfd92891498d046df4f25829)] adapt gh action
+    * [[#9cb231e](https://github.com/HLWeil/JsonDSL/commit/9cb231e488280db8bdd312d8ce97efe69c957ff8)] Finish basic tests
+    * [[#e113302](https://github.com/HLWeil/JsonDSL/commit/e1133021fdd11cb4155266313536548d2fb74171)] wip add json test files
+    * [[#00b0a08](https://github.com/HLWeil/JsonDSL/commit/00b0a08cbe898a687c8c445c89fa2d1c2cad5e81)] wip add tests
+* Bugfixes:
+    * [[#e140a57](https://github.com/HLWeil/JsonDSL/commit/e140a57b31bddf4ca090c0e7e4777e0ad0f24230)] fix and test operators
+
 ### 0.0.5+b345971 (Released 2023-3-31)
 * Additions:
     * [[#b345971](https://github.com/HLWeil/JsonDSL/commit/b345971ee1b8221ab0783713506d782b724b285a)] bump to 0.0.4
