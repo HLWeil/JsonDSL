@@ -16,6 +16,7 @@
     <None Include="Test.fsx" />
     <Compile Include="TestUtils.fs" />
     <Compile Include="Basetests.fs" />
+    <Compile Include="Operators.fs" />
     <Compile Include="ReferenceObjects.fs" />
     <Compile Include="TestObjects.fs" />
     <Compile Include="StringCreationTests.fs" />

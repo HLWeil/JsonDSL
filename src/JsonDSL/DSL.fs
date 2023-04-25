@@ -56,6 +56,13 @@ module DSL =
         | :? Result<byte,exn> as r -> parseResult f r
         | :? Result<System.DateTime,exn> as r -> parseResult f r
 
+        | :? string as s ->             JEntity.ofGeneric s
+        | :? int as i ->                JEntity.ofGeneric i
+        | :? float as f ->              JEntity.ofGeneric f
+        | :? single as s ->             JEntity.ofGeneric s
+        | :? byte as b ->               JEntity.ofGeneric b
+        | :? System.DateTime as d ->    JEntity.ofGeneric d
+
         | v -> failwith $"Could not parse value {v}. Only string,int,float,single,byte,System.DateTime allowed."
 
     /// Required value operator
