@@ -49,6 +49,11 @@ module DSL =
         | :? Option<byte> as o ->               parseOption f o
         | :? Option<System.DateTime> as o ->    parseOption f o
 
+        | :? Option<Nodes.JsonArray> as o ->  parseOption f o
+        | :? Option<Nodes.JsonValue> as o ->  parseOption f o
+        | :? Option<Nodes.JsonObject> as o -> parseOption f o
+        | :? Option<Nodes.JsonNode> as o ->   parseOption f o
+
         | :? Result<string,exn> as r -> parseResult f r
         | :? Result<int,exn> as r -> parseResult f r
         | :? Result<float,exn> as r -> parseResult f r

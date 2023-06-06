@@ -14,6 +14,15 @@ open TestUtils
 [<Tests>]
 let ``yield JEntity tests`` =
     testList "yield optional properties" [
+        testCase "jEntity_noneOptional_value" (fun _ ->
+            let result = 
+                object {
+                    property "myProperty" (-. Option.None)                    
+                }
+               
+            let v = result |> JsonObject.getProperties |> Seq.length
+            Expect.equal v 0 "Object should have no properties"
+        )
         testCase "jEntity_string_value" (fun _ ->
             let result = 
                 object {
@@ -25,14 +34,63 @@ let ``yield JEntity tests`` =
             JsonNode.isValue (v.Value) "did not yield correct value"
             Expect.equal (v.Value.AsValue() |> JsonValue.asString) "5" "yielded value was not correct"
         )
-        testCase "jEntity_noneOptional_value" (fun _ ->
+        testCase "jEntity_int_value" (fun _ ->
             let result = 
                 object {
-                    property "myProperty" (-. Option.None)                    
+                    property "myProperty" (-. (Option.Some 5))                    
                 }
                
-            let v = result |> JsonObject.getProperties |> Seq.length
-            Expect.equal v 0 "Object should have no properties"
+            let v = result |> JsonObject.tryGetProperty "myProperty"
+            Expect.isSome v "did not yield correct property"
+            JsonNode.isValue (v.Value) "did not yield correct value"
+            Expect.equal (v.Value.AsValue() |> JsonValue.asInt) 5 "yielded value was not correct"
+        )        
+        testCase "jEntity_float_value" (fun _ ->
+            let result = 
+                object {
+                    property "myProperty" (-. (Option.Some 5.))                    
+                }
+               
+            let v = result |> JsonObject.tryGetProperty "myProperty"
+            Expect.isSome v "did not yield correct property"
+            JsonNode.isValue (v.Value) "did not yield correct value"
+            Expect.equal (v.Value.AsValue() |> JsonValue.asFloat) 5. "yielded value was not correct"
+        )
+        testCase "jEntity_datetime_value" (fun _ ->
+            let time = System.DateTime.Parse("10/10/2010")
+            let result = 
+                object {
+                    property "myProperty" (-. (Option.Some time))                    
+                }
+               
+            let v = result |> JsonObject.tryGetProperty "myProperty"
+            Expect.isSome v "did not yield correct property"
+            JsonNode.isValue (v.Value) "did not yield correct value"
+            Expect.equal (v.Value.AsValue() |> JsonValue.asDateTime) time "yielded value was not correct"
+        )
+        testCase "jEntity_JsonArray_value" (fun _ ->
+            let arr = [|1; 2|]
+            let result = 
+                object {
+                    property "myProperty" (-. (Option.Some (array {1; 2})))                    
+                }
+               
+            let v = result |> JsonObject.tryGetProperty "myProperty"
+            Expect.isSome v "did not yield correct property"
+            JsonNode.isArray (v.Value) "did not yield correct value"
+            Expect.equal (v.Value.AsArray() |> JsonArray.castAs<int>) arr "yielded array was not correct"
+        )
+        testCase "jEntity_JsonObject_value" (fun _ ->
+
+            let result = 
+                object {
+                    property "myProperty" (-. (Option.Some (object {property "key" "value"})))                    
+                }
+               
+            let v = result |> JsonObject.tryGetProperty "myProperty"
+            Expect.isSome v "did not yield correct property"
+            JsonNode.isObject (v.Value) "did not yield correct value"
+            Expect.isTrue (JsonObject.hasProperty "key" (v.Value.AsObject())) "yielded object was not correct"
         )
     ]
 
