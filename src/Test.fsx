@@ -4,6 +4,25 @@ open JsonDSL
 open System.Text.Json
 
 let options = JsonSerializerOptions(WriteIndented = true)
+type Person = {
+    Name: string
+    Email: string option
+}
+
+let convert (p:Person) = 
+    object {
+        property "name" p.Name
+        property "email" (+. p.Email)
+    }
+    
+let convertOptional (p:Person) = 
+    object {
+        property "name" p.Name
+        property "email" (-. p.Email)
+    }    
+convertOptional {Name = "Duderich"; Email = Option.None} //
+convertOptional {Name = "Duderich"; Email = Option.Some "yes@yes.yup"} //
+object {property "hi" (-. (Option.None))}
 
 let jNode =
     object {
