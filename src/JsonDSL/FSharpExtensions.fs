@@ -92,9 +92,10 @@ module FSharpExtensions =
         /// Returns the value as 'T if possible, else returns None
         let tryAs<'T> (v : Nodes.JsonValue) =
             let b,v = v.TryGetValue<'T>()
+            
             if b then Some v else None
 
-        let castAs<'T> (v : Nodes.JsonValue) = (tryAs<'T> v).Value
+        let castAs<'T> (v : Nodes.JsonValue) = v.Deserialize<'T>()
 
         /// Returns the value as string if possible, else returns None
         let tryAsString (v : Nodes.JsonValue) = tryAs<string> v
@@ -133,7 +134,7 @@ module FSharpExtensions =
         let tryAs<'T> (a : Nodes.JsonArray) = 
             try Some (a.Deserialize<'T []>()) with _ -> None
 
-        let castAs<'T> (a : Nodes.JsonArray) = (tryAs<'T> a).Value
+        let castAs<'T> (a : Nodes.JsonArray) = a.Deserialize<'T []>()
 
         /// Returns all the elements of the JsonArray
         let getElements (a : Nodes.JsonArray) =

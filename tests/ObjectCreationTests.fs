@@ -12,16 +12,15 @@ open TestUtils
 // see also: https://stackoverflow.com/questions/60580743/what-is-equivalent-in-jtoken-deepequals-in-system-text-json
 
 [<Tests>]
-let ``yield JEntity tests`` =
-    testList "yield optional properties" [
+let ``yield optional JEntity tests`` =
+    testList "yield optional properties via (-.)" [
         testCase "jEntity_noneOptional_value" (fun _ ->
             let result = 
                 object {
                     property "myProperty" (-. Option.None)                    
                 }
                
-            let v = result |> JsonObject.getProperties |> Seq.length
-            Expect.equal v 0 "Object should have no properties"
+            Expect.isTrue (JsonObject.isEmpty result) "Object should have no properties"
         )
         testCase "jEntity_string_value" (fun _ ->
             let result = 
@@ -92,6 +91,12 @@ let ``yield JEntity tests`` =
             JsonNode.isObject (v.Value) "did not yield correct value"
             Expect.isTrue (JsonObject.hasProperty "key" (v.Value.AsObject())) "yielded object was not correct"
         )
+    ]
+
+[<Tests>]
+let ``yield required JEntity tests`` =
+    testList "yield required properties via (+.)" [
+        testCase "missing required value fails" (fun _ -> Expect.throws (fun _ -> object {property "myProperty" (+. Option.None)} |> ignore) "object creation with missing required property value did not fail")
     ]
 
 [<PTests>]
