@@ -9,11 +9,11 @@ module DSL =
     let object = ObjectBuilder()
     let array = ArrayBuilder()
 
-    /// Optional operators for object and array expressions
-    let optionaL = OptionalSource()
+    /// Optional for array expressions
+    let optionalArray = OptionalSource()
 
-    /// Required operators for object and array expressions
-    let requireD = RequiredSource()
+    /// Required operators for array expressions
+    let requiredArray = RequiredSource()
 
     let inline parseExpression (def : exn -> JEntity<Nodes.JsonNode>) (s : Expr<'a>) : JEntity<Nodes.JsonNode> =
         try 
@@ -48,6 +48,11 @@ module DSL =
         | :? Option<single> as o ->             parseOption f o
         | :? Option<byte> as o ->               parseOption f o
         | :? Option<System.DateTime> as o ->    parseOption f o
+
+        | :? Option<Nodes.JsonArray> as o ->  parseOption f o
+        | :? Option<Nodes.JsonValue> as o ->  parseOption f o
+        | :? Option<Nodes.JsonObject> as o -> parseOption f o
+        | :? Option<Nodes.JsonNode> as o ->   parseOption f o
 
         | :? Result<string,exn> as r -> parseResult f r
         | :? Result<int,exn> as r -> parseResult f r

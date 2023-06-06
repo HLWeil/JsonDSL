@@ -89,25 +89,37 @@ module FSharpExtensions =
         let isEmpty (v : Nodes.JsonValue) = 
             v.ToJsonString() = "\"\""
 
-        /// Returns the value as string
-        let asString (v : Nodes.JsonValue) =
-            let b,v = v.TryGetValue()
-            string v
+        /// Returns the value as 'T if possible, else returns None
+        let tryAs<'T> (v : Nodes.JsonValue) =
+            let b,v = v.TryGetValue<'T>()
+            
+            if b then Some v else None
+
+        let castAs<'T> (v : Nodes.JsonValue) = v.Deserialize<'T>()
 
         /// Returns the value as string if possible, else returns None
-        let tryAsString (v : Nodes.JsonValue) =
-            let b,v = v.TryGetValue()
-            try v |> string |> Some with | _ -> None
-
-        /// Returns the value as float if possible, else returns None
-        let tryAsFloat (v : Nodes.JsonValue) =
-            let b,v = v.TryGetValue()
-            try v |> float |> Some with | _ ->None
+        let tryAsString (v : Nodes.JsonValue) = tryAs<string> v
 
         /// Returns the value as int if possible, else returns None
-        let tryAsInt (v : Nodes.JsonValue) =
-            let b,v = v.TryGetValue()
-            try v |> int |> Some with | _ -> None
+        let tryAsInt (v : Nodes.JsonValue) = tryAs<int> v
+
+        /// Returns the value as float if possible, else returns None
+        let tryAsFloat (v : Nodes.JsonValue) = tryAs<float> v
+
+        /// Returns the value as DateTime if possible, else returns None
+        let tryAsDateTime (v : Nodes.JsonValue) = tryAs<System.DateTime> v
+
+        /// Returns the value as string
+        let asString (v : Nodes.JsonValue) = castAs<string> v
+
+        /// Returns the value as int
+        let asInt (v : Nodes.JsonValue) = castAs<int> v
+
+        /// Returns the value as float
+        let asFloat (v : Nodes.JsonValue) = castAs<float> v
+
+        /// Returns the value as DateTime
+        let asDateTime (v : Nodes.JsonValue) = castAs<System.DateTime> v
 
         let inline create (v : 'T) =
             Nodes.JsonValue.Create(v)
@@ -119,6 +131,11 @@ module FSharpExtensions =
         let isEmpty (a : Nodes.JsonArray) = 
             a.Count = 0
             
+        let tryAs<'T> (a : Nodes.JsonArray) = 
+            try Some (a.Deserialize<'T []>()) with _ -> None
+
+        let castAs<'T> (a : Nodes.JsonArray) = a.Deserialize<'T []>()
+
         /// Returns all the elements of the JsonArray
         let getElements (a : Nodes.JsonArray) =
             a
