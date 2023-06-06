@@ -1,5 +1,5 @@
-# LitJson
-Small FSharp based DSL for writing literal json.
+# JsonDSL
+Small FSharp based DSL for writing json.
 
 
 ## Simple Object creation
