@@ -9,11 +9,11 @@ module DSL =
     let object = ObjectBuilder()
     let array = ArrayBuilder()
 
-    /// Optional operators for object and array expressions
-    let optionaL = OptionalSource()
+    /// Optional for array expressions
+    let optionalArray = OptionalSource()
 
-    /// Required operators for object and array expressions
-    let requireD = RequiredSource()
+    /// Required operators for array expressions
+    let requiredArray = RequiredSource()
 
     let inline parseExpression (def : exn -> JEntity<Nodes.JsonNode>) (s : Expr<'a>) : JEntity<Nodes.JsonNode> =
         try 

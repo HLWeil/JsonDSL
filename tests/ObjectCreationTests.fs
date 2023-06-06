@@ -99,6 +99,106 @@ let ``yield required JEntity tests`` =
         testCase "missing required value fails" (fun _ -> Expect.throws (fun _ -> object {property "myProperty" (+. Option.None)} |> ignore) "object creation with missing required property value did not fail")
     ]
 
+[<Tests>]
+let ``optionalObject`` = 
+    testList "optionalObject" [
+        testCase "optionalObject is ommitted when inner expression fails" (fun _ ->
+            let r = object {
+                property "willFail" (object {
+                    optionalObject
+                    property "" (+. Option.None)
+                })
+            } 
+            Expect.isTrue (JsonObject.isEmpty r) "object was not empty"
+            Expect.isFalse (r |> JsonObject.hasProperty "willFail") "expected property to be ommitted"
+        )
+        testCase "optionalObject is present when inner expression succeeds" (fun _ ->
+            let r = object {
+                property "willWork" (object {
+                    optionalObject
+                    property "hi" (-. (Option.Some 5.))
+                })
+            } 
+            Expect.isFalse (JsonObject.isEmpty r) "object was not empty"
+            Expect.isTrue (r |> JsonObject.hasProperty "willWork") "expected property to be present"
+        )
+    ]
+
+[<Tests>]
+let ``requiredObject`` = 
+    testList "requiredObject" [
+        testCase "requiredObject fails when inner expression fails" (fun _ ->
+            let r() = 
+                object {
+                    property "willFail" (object {
+                        requiredObject
+                        property "hi" (+. Option.None)
+                    }) 
+                } |> ignore
+            Expect.throws r "object creation with missing required property value did not fail"
+        )
+        testCase "requiredObject is present when inner expression succeeds" (fun _ ->
+            let r = object {
+                property "willWork" (object {
+                    requiredObject
+                    property "hi" (+. (Option.Some 5.))
+                })
+            } 
+            Expect.isFalse (JsonObject.isEmpty r) "object was not empty"
+            Expect.isTrue (r |> JsonObject.hasProperty "willWork") "expected property to be present"
+        )
+    ]
+
+[<Tests>]
+let ``optionalArray`` = 
+    testList "optionalArray" [
+        testCase "optionalArray is ommitted when inner expression fails" (fun _ ->
+            let r = object {
+                property "willFail" (array {
+                    yield optionalArray
+                    yield (+. Option.None)
+                })
+            } 
+            Expect.isTrue (JsonObject.isEmpty r) "object was not empty"
+            Expect.isFalse (r |> JsonObject.hasProperty "willFail") "expected property to be ommitted"
+        )
+        testCase "optionalArray is present when inner expression succeeds" (fun _ ->
+            let r = object {
+                property "willWork" (array {
+                    yield optionalArray
+                    yield (-. (Option.Some 5.))
+                })
+            } 
+            Expect.isFalse (JsonObject.isEmpty r) "object was not empty"
+            Expect.isTrue (r |> JsonObject.hasProperty "willWork") "expected property to be present"
+        )
+    ]
+
+[<Tests>]
+let ``requiredArray`` = 
+    testList "requiredArray" [
+        testCase "requiredArray fails when inner expression fails" (fun _ ->
+            let r() = 
+                object {
+                    property "willFail" (array {
+                        yield requiredArray
+                        yield (+. Option.None)
+                    }) 
+                } |> ignore
+            Expect.throws r "object creation with missing required property value did not fail"
+        )
+        testCase "requiredArray is present when inner expression succeeds" (fun _ ->
+            let r = object {
+                property "willWork" (array {
+                    yield requiredArray
+                    yield (+. (Option.Some 5.))
+                })
+            } 
+            Expect.isFalse (JsonObject.isEmpty r) "object was not empty"
+            Expect.isTrue (r |> JsonObject.hasProperty "willWork") "expected property to be present"
+        )
+    ]
+
 [<PTests>]
 let ``json string creation tests`` =
     testList "json object creation" [

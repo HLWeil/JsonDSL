@@ -60,11 +60,11 @@ type ObjectBuilder() =
         |> OptionalSource
 
     /// Select output
-    [<CustomOperation("required")>]
+    [<CustomOperation("requiredObject")>]
     member x.Required<'T> (fields : Properties) : RequiredSource<Properties> =
         RequiredSource(fields)
 
-    [<CustomOperation("optional")>]
+    [<CustomOperation("optionalObject")>]
     member x.Optional<'T> (fields : Properties) : OptionalSource<Properties> =
         OptionalSource(fields)
 
