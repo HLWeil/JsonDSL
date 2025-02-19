@@ -1,3 +1,8 @@
+### 0.3.0+c09a0ce (Released 2025-2-19)
+* Additions:
+    * [[#c09a0ce](https://github.com/HLWeil/JsonDSL/commit/c09a0ce6470e7c624f58e05540cc05c8a2e5f42d)] update all dependencies and .net version
+    * [[#424ac53](https://github.com/HLWeil/JsonDSL/commit/424ac536d54110f95acd3053dabcb064de9a402b)] bump to 0.2.0
+
 ### 0.2.0+0fb477b (Released 2023-6-6)
 * Additions:
     * [[#7d7165b](https://github.com/HLWeil/JsonDSL/commit/7d7165b76a4fd96869a02242167c18381d725d3b)] rename
