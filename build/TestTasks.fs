@@ -10,11 +10,16 @@ let runTests = BuildTask.create "RunTests" [clean; build] {
     testProjects
     |> Seq.iter (fun testProject ->
         Fake.DotNet.DotNet.test(fun testParams ->
+            let msBuildParams =
+                {testParams.MSBuildParams with 
+                    DisableInternalBinLog = true
+                }
             {
                 testParams with
                     Logger = Some "console;verbosity=detailed"
                     Configuration = DotNet.BuildConfiguration.fromString configuration
                     NoBuild = true
+                    MSBuildParams = msBuildParams
             }
         ) testProject
     )
