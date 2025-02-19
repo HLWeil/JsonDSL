@@ -1,3 +1,9 @@
+### 0.3.1+feac54d (Released 2025-2-19)
+* Additions:
+    * [[#20cf44b](https://github.com/HLWeil/JsonDSL/commit/20cf44b2644069493cacb0a661c66e633c94e795)] bump to 0.3.0
+* Deletions:
+    * [[#feac54d](https://github.com/HLWeil/JsonDSL/commit/feac54d0957f51a4d803c6ed854930b71897e6e3)] remove explicit fsharp core dependency
+
 ### 0.3.0+c09a0ce (Released 2025-2-19)
 * Additions:
     * [[#c09a0ce](https://github.com/HLWeil/JsonDSL/commit/c09a0ce6470e7c624f58e05540cc05c8a2e5f42d)] update all dependencies and .net version
