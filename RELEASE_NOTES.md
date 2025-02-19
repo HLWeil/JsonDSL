@@ -1,3 +1,11 @@
+### 0.2.0+0fb477b (Released 2023-6-6)
+* Additions:
+    * [[#7d7165b](https://github.com/HLWeil/JsonDSL/commit/7d7165b76a4fd96869a02242167c18381d725d3b)] rename
+    * [[#dc875e2](https://github.com/HLWeil/JsonDSL/commit/dc875e237576589997db18f10cf33af081f09364)] Add basic docs in readme
+    * [[#762bf10](https://github.com/HLWeil/JsonDSL/commit/762bf10fcf9db6de09e32e1fb3a0a7dcc230d174)] add requiredArray and requiredObject, add tests
+    * [[#889d179](https://github.com/HLWeil/JsonDSL/commit/889d1790469aa635de174ebc956669d6f6eb0f02)] requested changes
+    * [[#b02820c](https://github.com/HLWeil/JsonDSL/commit/b02820ccd2e98d0def5cefb219150a5417fb4171)] make optional operator work with JsonNodes
+
 ### 0.1.0+fd996da (Released 2023-4-25)
 * Additions:
     * [[#a393a7b](https://github.com/HLWeil/JsonDSL/commit/a393a7b706ff23f9bfd92891498d046df4f25829)] adapt gh action
